@@ -1,7 +1,6 @@
 {
   "name": "liribot",
   "version": "1.0.0",
-  "description": "",
   "main": "liri.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "request": "^2.81.0",
     "twitter": "^1.7.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willisdorden/liribot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willisdorden/liribot/issues"
+  },
+  "homepage": "https://github.com/willisdorden/liribot#readme",
+  "description": ""
 }
