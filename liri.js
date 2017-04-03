@@ -51,20 +51,28 @@ function movie() {
 
 function songs() {
 
-    var client = new SpotifyWebApi({
+    var spotifyApi = new SpotifyWebApi({
         clientId: keys.spotifyKeys.clientId,
         clientSecret: keys.spotifyKeys.clientSecret,
         redirectUri: keys.spotifyKeys.redirectUri,
     });
-    spotify.search({type: 'track', query:" dancing in the moonlight "}, function (err, data) {
-        if (err) {
-            console.log('Error occurred: ' + err);
-            return;
 
-        }
-        console.log(data.items);
-    });
+
+    spotifyApi.searchTracks(trackName)
+        .then(function (data) {
+            console.log(data.body.tracks.items[0].artists[0].name);
+            console.log(data.body.tracks.items[0].name);
+            console.log(data.body.tracks.items[0].preview_url);
+            console.log(data.body.tracks.items[0].album.name);
+
+            }, function (err) {
+            console.error(err);
+        });
+
 }
+
+
+
 // im grabbing the userinput and calling the function
 var userinput = process.argv[2];
 //console.log(userinput);
@@ -73,11 +81,7 @@ var movieName = process.argv[3];
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "=&plot=short&r=json";
 var trackName = process.argv[3];
 
-    //if(userinput === "myTweets"){
-      //  myTweets();
-   // }if (userinput === "Movie-this"){
-     //   movie(movieName);
-    //}
+
 switch (userinput){
     case "myTweets":
         myTweets();
@@ -88,7 +92,7 @@ switch (userinput){
         break;
 
     case "spotify-this-song":
-        songs();
+        songs(trackName);
         break;
 }
 
